@@ -1,35 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.container1}>
-        Welcome to the world of Jerun maame
-      </Text>
-      <Text style={styles.container1}>
-        Jerun Kingston
-      </Text>
-      <View>
-        <Button title='Jerun' />
+    <View style={styles.appcontainer}>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.textInput} placeholder='Enter your name brother: '/>
+        <Button title='Add name'/>
       </View>
-      <StatusBar style="auto" />
+      <View>
+        <Text>List of Names</Text>
+      </View>
     </View>
+    
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  appcontainer :{
+    padding: 25,
   },
-  container1: {
-    margin: 16,
-    borderWidth: 2,
-    borderColor: 'red',
-    padding: 10,
-    fontSize: 15,
+  inputContainer: {
+    flexDirection: 'row',
+    justifyContent:'space-between'
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: 'black',
+    width: '80%',
+    marginRight: 10,
+    padding: 5,
   }
+
 });
