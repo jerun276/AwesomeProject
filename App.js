@@ -4,13 +4,14 @@ import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const[nameText, setNameText] = useState("")
+  const[names, setNames] = useState([])
 
   function goalInputHandler(text) {
     setNameText(text)
   }
 
   function addNameHandler() {
-    console.log(nameText)
+    setNames((currentNames) => [...currentNames, nameText])
   }
 
   return (
@@ -25,7 +26,7 @@ export default function App() {
           title='Add name' />
       </View>
       <View style={styles.listContainer}>
-        <Text>List of Names</Text>
+        {names.map((name,i) =><Text key={i}>{name}</Text>)}
       </View>
     </View>
 
