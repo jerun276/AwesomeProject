@@ -1,25 +1,30 @@
 import { useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import NameItem from './NameItem';
 import NameInput from './NameInput';
 
 export default function App() {
   const [names, setNames] = useState([])
 
-  
+
 
   function addNameHandler(nameText) {
     setNames((currentNames) => [...currentNames, nameText])
   }
 
+  function deleteItem(index) {
+    const newNames = names.filter((el, i) => i != index)
+    setNames(newNames);
+  }
+
   return (
     <View style={styles.appContainer}>
-      <NameInput onAddName={addNameHandler}/>
+      <NameInput onAddName={addNameHandler} />
       <View style={styles.listContainer}>
         <FlatList
           data={names}
           renderItem={(nameData) => {
-            return <NameItem text={nameData.item}/>
+            return <NameItem text={nameData.item} onDelete={() => deleteItem(nameData.index)} />
           }
           }
         />
