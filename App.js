@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { StyleSheet, View, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Button } from 'react-native';
 import NameItem from './NameItem';
 import NameInput from './NameInput';
 
 export default function App() {
-  const [names, setNames] = useState([])
-
-
+  const [names, setNames] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   function addNameHandler(nameText) {
     setNames((currentNames) => [...currentNames, nameText])
@@ -17,9 +16,14 @@ export default function App() {
     setNames(newNames);
   }
 
+  function startAddNameHandler() {
+    setIsModalVisible(true);
+  }
+
   return (
     <View style={styles.appContainer}>
-      <NameInput onAddName={addNameHandler} />
+      <Button title='Add New Name' color="#5e0acc" onPress={startAddNameHandler}/>
+      <NameInput visible={isModalVisible} onAddName={addNameHandler} />
       <View style={styles.listContainer}>
         <FlatList
           data={names}
@@ -36,7 +40,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   appContainer: {
-    padding: 25,
+    padding: 50,
     flex: 1,
   },
   listContainer: {

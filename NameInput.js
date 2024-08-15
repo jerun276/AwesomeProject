@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { StyleSheet, View, TextInput, Button } from "react-native"
+import { StyleSheet, View, TextInput, Button, Modal } from "react-native"
 
 function NameInput(props) {
     const [nameText, setNameText] = useState("")
@@ -8,20 +8,22 @@ function NameInput(props) {
         setNameText(text)
     }
 
-    function addNameHandler(){
+    function addNameHandler() {
         props.onAddName(nameText)
     }
 
     return (
-        <View style={styles.inputContainer}>
-            <TextInput
-                onChangeText={goalInputHandler}
-                style={styles.textInput}
-                placeholder='Enter your name brother: ' />
-            <Button
-                onPress={addNameHandler}
-                title='Add name' />
-        </View>
+        <Modal visible={props.visible} animationType="slide">
+            <View style={styles.inputContainer}>
+                <TextInput
+                    onChangeText={goalInputHandler}
+                    style={styles.textInput}
+                    placeholder='Enter your name brother: ' />
+                <Button
+                    onPress={addNameHandler}
+                    title='Add name' />
+            </View>
+        </Modal>
     )
 }
 
