@@ -24,12 +24,14 @@ function NameInput(props) {
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
                         <Button
-                            onPress={addNameHandler}
-                            title='Add name' />
+                            color="#f31"
+                            title='Cancel' onPress={props.onClose} />
                     </View>
                     <View style={styles.button}>
                         <Button
-                            title='Cancel' onPress={props.onClose} />
+                            color="#5e0acc"
+                            onPress={addNameHandler}
+                            title='Add name' />
                     </View>
                 </View>
             </View>
@@ -45,13 +47,16 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         paddingBottom: 25,
         flex: 1,
-        backgroundColor: '#1A0037'
+        backgroundColor: '#1A0037',
+
     },
     textInput: {
         borderWidth: 1,
         borderColor: 'white',
         width: '80%',
-        padding: 5,
+        padding: 8,
+        borderRadius: 6,
+        backgroundColor: '#e4d0ff'
     },
     buttonContainer: {
         flexDirection: 'row',

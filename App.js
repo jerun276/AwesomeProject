@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View, FlatList, Button } from 'react-native';
 import NameItem from './NameItem';
 import NameInput from './NameInput';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const [names, setNames] = useState([]);
@@ -25,20 +26,22 @@ export default function App() {
   }
 
   return (
-    <View style={styles.appContainer}>
-      <Button title='Add New Name' color="#5e0acc" onPress={startAddNameHandler}/>
-      <NameInput onClose={endAddNameHandler} visible={isModalVisible} onAddName={addNameHandler} />
-      <View style={styles.listContainer}>
-        <FlatList
-          data={names}
-          renderItem={(nameData) => {
-            return <NameItem text={nameData.item} onDelete={() => deleteItem(nameData.index)} />
-          }
-          }
-        />
+    <>
+      <StatusBar style='light'/>
+      <View style={styles.appContainer}>
+        <Button title='Add New Name' color="#A070D6" onPress={startAddNameHandler} />
+        <NameInput onClose={endAddNameHandler} visible={isModalVisible} onAddName={addNameHandler} />
+        <View style={styles.listContainer}>
+          <FlatList
+            data={names}
+            renderItem={(nameData) => {
+              return <NameItem text={nameData.item} onDelete={() => deleteItem(nameData.index)} />
+            }
+            }
+          />
+        </View>
       </View>
-    </View>
-
+    </>
   );
 }
 
@@ -46,6 +49,7 @@ const styles = StyleSheet.create({
   appContainer: {
     padding: 50,
     flex: 1,
+    backgroundColor: '#1A0037',
   },
   listContainer: {
     flex: 4,
