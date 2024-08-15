@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View, FlatList } from 'react-native';
 
 export default function App() {
-  const[nameText, setNameText] = useState("")
-  const[names, setNames] = useState([])
+  const [nameText, setNameText] = useState("")
+  const [names, setNames] = useState([])
 
   function goalInputHandler(text) {
     setNameText(text)
@@ -15,7 +15,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.appcontainer}>
+    <View style={styles.appContainer}>
       <View style={styles.inputContainer}>
         <TextInput
           onChangeText={goalInputHandler}
@@ -26,15 +26,25 @@ export default function App() {
           title='Add name' />
       </View>
       <View style={styles.listContainer}>
-        {names.map((name,i) =><Text key={i}>{name}</Text>)}
+        <FlatList
+          data={names}
+          renderItem={(namesData) => {
+            return (
+              <Text style={styles.nameItem}>{namesData.item}</Text>
+            )
+          }
+          }
+        />
+        {/* {names.map((name, i) => <Text style={styles.nameItem} key={i}>{name}</Text>)}*/}
       </View>
+
     </View>
 
   );
 }
 
 const styles = StyleSheet.create({
-  appcontainer: {
+  appContainer: {
     padding: 25,
     flex: 1,
   },
@@ -56,6 +66,13 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flex: 4,
-  }
+  },
+  nameItem: {
+    margin: 8,
+    padding: 8,
+    borderRadius: 6,
+    backgroundColor: "#5e0acc",
+    color: 'white',
+  },
 
 });
