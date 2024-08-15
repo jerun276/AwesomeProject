@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { StyleSheet, View, TextInput, Button, Modal } from "react-native"
+import { StyleSheet, View, TextInput, Button, Modal, Image } from "react-native"
 
 function NameInput(props) {
     const [nameText, setNameText] = useState("")
@@ -16,6 +16,7 @@ function NameInput(props) {
     return (
         <Modal visible={props.visible} animationType="slide">
             <View style={styles.inputContainer}>
+                <Image style={styles.image} source={require('./assets/Images/logo.png')} />
                 <TextInput
                     onChangeText={goalInputHandler}
                     style={styles.textInput}
@@ -28,7 +29,7 @@ function NameInput(props) {
                     </View>
                     <View style={styles.button}>
                         <Button
-                            title='Cancel' onPress={props.onClose}/>
+                            title='Cancel' onPress={props.onClose} />
                     </View>
                 </View>
             </View>
@@ -43,12 +44,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderBottomWidth: 1,
         paddingBottom: 25,
-        borderBottomColor: 'green',
         flex: 1,
+        backgroundColor: '#1A0037'
     },
     textInput: {
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: 'white',
         width: '80%',
         padding: 5,
     },
@@ -60,6 +61,11 @@ const styles = StyleSheet.create({
         width: 150,
         marginHorizontal: 8
     },
+    image: {
+        width: 150,
+        height: 150,
+        margin: 20,
+    }
 })
 
 module.exports = NameInput;
