@@ -19,9 +19,17 @@ function NameInput(props) {
                     onChangeText={goalInputHandler}
                     style={styles.textInput}
                     placeholder='Enter your name brother: ' />
-                <Button
-                    onPress={addNameHandler}
-                    title='Add name' />
+                <View style={styles.buttonContainer}>
+                    <View style={styles.button}>
+                        <Button
+                            onPress={addNameHandler}
+                            title='Add name' />
+                    </View>
+                    <View style={styles.button}>
+                        <Button
+                            title='Cancel' />
+                    </View>
+                </View>
             </View>
         </Modal>
     )
@@ -29,8 +37,8 @@ function NameInput(props) {
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
         borderBottomWidth: 1,
         paddingBottom: 25,
@@ -41,9 +49,16 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black',
         width: '80%',
-        marginRight: 10,
         padding: 5,
-    }
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        marginTop: 16
+    },
+    button: {
+        width: 150,
+        marginHorizontal: 8
+    },
 })
 
 module.exports = NameInput;
