@@ -20,10 +20,14 @@ export default function App() {
     setIsModalVisible(true);
   }
 
+  function endAddNameHandler() {
+    setIsModalVisible(false);
+  }
+
   return (
     <View style={styles.appContainer}>
       <Button title='Add New Name' color="#5e0acc" onPress={startAddNameHandler}/>
-      <NameInput visible={isModalVisible} onAddName={addNameHandler} />
+      <NameInput onClose={endAddNameHandler} visible={isModalVisible} onAddName={addNameHandler} />
       <View style={styles.listContainer}>
         <FlatList
           data={names}

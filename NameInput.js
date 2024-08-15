@@ -9,7 +9,8 @@ function NameInput(props) {
     }
 
     function addNameHandler() {
-        props.onAddName(nameText)
+        props.onAddName(nameText);
+        props.onClose();
     }
 
     return (
@@ -27,7 +28,7 @@ function NameInput(props) {
                     </View>
                     <View style={styles.button}>
                         <Button
-                            title='Cancel' />
+                            title='Cancel' onPress={props.onClose}/>
                     </View>
                 </View>
             </View>
